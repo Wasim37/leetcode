@@ -4,6 +4,7 @@
 #         self.val = x
 #         self.next = None
 
+# https://blog.csdn.net/lislislislislis/article/details/88955364
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
         slow = fast = head
