@@ -7,15 +7,14 @@ class Solution:
         lookup = defaultdict(int)
         for c in t:
             # 默认值为0.初始化为1，
-            # 1，移动窗口不包含
-            # 0，移动窗口包含
+            # 大于0，待添加至滑动窗口
             lookup[c] += 1
-        print(lookup)
+#         print(lookup)
         
         start = 0
         end = 0
         min_len = float("inf")
-        # counter为0，代表窗口已经包含了全部元素
+        # 待添加至滑动窗口的字符数量
         counter = len(t)
         res = ""
         while end < len(s):
@@ -31,14 +30,14 @@ class Solution:
                 if min_len > end - start:
                     min_len = end - start
                     res = s[start:end]
-                # ?不理解
+                # 收缩窗口和右移窗口的操作对称
                 if lookup[s[start]] == 0:
                     counter += 1
                 lookup[s[start]] += 1
                 start += 1
-            print(lookup)
+#             print(lookup)
         return res
 
             
 s = Solution()
-s.minWindow('ADOBECODEBANC',"ABC")
+s.minWindow('AAABCSD',"ABC")
