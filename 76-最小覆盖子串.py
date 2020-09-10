@@ -6,7 +6,7 @@ class Solution:
         from collections import defaultdict
         lookup = defaultdict(int)
         for c in t:
-            # 默认值为0.初始化为1，
+            # defaultdict初始化时默认值为0
             # 大于0，待添加至滑动窗口
             lookup[c] += 1
 #         print(lookup)

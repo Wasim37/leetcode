@@ -7,20 +7,20 @@ class Solution:
         max_len = 0
         counter = 0
         while end < len(s):
-            # ´°¿ÚÓÒÒÆ
+            # çª—å£å³ç§»
             if lookup[s[end]] > 0:
                 counter += 1
             lookup[s[end]] += 1
             end += 1
 
-            # ×ó±ß´°¿ÚÊÕËõ
-            # Èç¹û counter ´óÓÚ1£¬±íÊ¾´æÔÚÖØ¸´×Ö·û
+            # å·¦è¾¹çª—å£æ”¶ç¼©
+            # å¦‚æœ counter å¤§äº1ï¼Œè¡¨ç¤ºå­˜åœ¨é‡å¤å­—ç¬¦
             while counter > 0:
                 if lookup[s[start]] > 1:
                     counter -= 1
                 lookup[s[start]] -= 1
                 start += 1
 
-            # Î¬»¤×î³¤×Ó´®³¤¶È
+            # ç»´æŠ¤æœ€é•¿å­ä¸²é•¿åº¦
             max_len = max(max_len, end - start)
         return max_len
