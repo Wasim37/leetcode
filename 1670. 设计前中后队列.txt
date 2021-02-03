@@ -1,0 +1,59 @@
+// 最简单的方法就是使用一个语言自带的函数来模拟这个队列了，例如 Python 的 list 和 java的LinkedList 
+// 但是这些函数，在计算「正中间」的位置，时间复杂度都相对较高。
+// 优化方案：使用双链表。我们规定让链表一的结点个数比链表二的结点个数少一个。然后根据奇偶分类讨论。降低时间复杂度
+// https://leetcode-cn.com/problems/design-front-middle-back-queue/solution/shou-xie-shuang-lian-biao-zai-o1shi-jian-0sv7/
+
+
+class FrontMiddleBackQueue {
+
+    LinkedList<Integer> queue;
+    
+	public FrontMiddleBackQueue() {
+		this.queue = new LinkedList<Integer>();
+    }
+    public void pushFront(int val) {
+    	queue.addFirst(val);
+    }
+    
+    public void pushMiddle(int val) {
+    	int index=queue.size()/2; 
+    	queue.add(index,val);
+    }
+    
+    public void pushBack(int val) {
+    	queue.addLast(val);
+    }
+    
+    public int popFront() {
+    	if(queue.isEmpty()) return -1;
+    	return queue.removeFirst();
+    }
+    
+    public int popMiddle() {
+    	int index=queue.size()/2;
+    	if(queue.isEmpty()) {
+            return -1;
+        }
+    	if(queue.size()%2==0) {
+            return queue.remove(index-1);
+        }
+    	return queue.remove(index);
+    }
+    
+    public int popBack() {
+    	if(queue.isEmpty()) return -1;
+    	return queue.removeLast();
+    }
+}
+
+/**
+ * Your FrontMiddleBackQueue object will be instantiated and called as such:
+ * FrontMiddleBackQueue obj = new FrontMiddleBackQueue();
+ * obj.pushFront(val);
+ * obj.pushMiddle(val);
+ * obj.pushBack(val);
+ * int param_4 = obj.popFront();
+ * int param_5 = obj.popMiddle();
+ * int param_6 = obj.popBack();
+ */
+

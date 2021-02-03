@@ -1,0 +1,38 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+class Solution {
+    public ListNode swapNodes(ListNode head, int k) {
+        ListNode cur = head;
+        ListNode first = head;
+        ListNode last = head;
+        int count = 1;
+        while(cur.next != null){
+            if(count < k){
+                // 找到正数第k个节点
+                first = first.next;
+            } else {
+                // 找到倒数第k个节点
+                last = last.next;
+            }
+            count ++;
+            cur = cur.next;
+        }
+        //交换值
+        int tmp = first.val;
+        first.val = last.val;
+        last.val = tmp;
+        return head;
+    }
+}
+
+// 快慢指针与链表技巧：https://www.yuque.com/wasim37/kvm7xc/gsfqyr#G63m6
+// 解答：https://leetcode-cn.com/problems/swapping-nodes-in-a-linked-list/solution/javashuang-zhi-zhen-ding-wei-fa-by-uive-vxl0/
